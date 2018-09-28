@@ -1,2 +1,3 @@
-# react-clickygame
-Clicky Game using React Try to Remember which Image you clicked!
+# Heroku Link
+
+Deployed App found [here](https://google.com)
