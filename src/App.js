@@ -25,10 +25,10 @@ class App extends Component {
 
   resetGame = () => {
     const tiles = this.state.tiles.map(tile => ({ ...tile, clicked: false }))
-    console.log('TILES', tiles)
+    //console.log('TILES', tiles)
     this.setState({ score: 0, tiles })
     this.shuffleTiles();
-    console.log('NEW STATE', this.state)
+    //console.log('NEW STATE', this.state)
   }
 
   resetTiles = () => {
@@ -83,26 +83,28 @@ class App extends Component {
       <div className="root">
         <h1>Score: { this.state.score }</h1>
         <h1>Top Score: { this.state.topScore }</h1>
-        {
-          this.state.tiles.map(tile => ( // TODO: Shuffle these around! Hint: .sort()
-            <div
-              key={ tile.id }
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: 100,
-                height: 100,
-                margin: '1em',
-                backgroundColor: tile.color,
-                color: '#fff',
-              }}
-              onClick={ () => this.handleClick(tile.id) }
-            >
-              <img src={ tile.imgUrl } alt={"GameImage" + tile.id}/>
-            </div>
-          ))
-        }
+        <div className="container">
+          <div className="row">
+            { 
+              this.state.tiles.map(tile => (
+                <img
+                  key={tile.id}
+                  style={{
+                    display: 'flex',
+                    flexFlow: 'row wrap',
+                    justifyContent: 'space-around',
+                    width: 200,
+                    height: 200,
+                    margin: '1em'
+                  }}
+                  src={ tile.imgUrl } 
+                  alt={"GameImage" + tile.id}
+                  onClick={ () => this.handleClick(tile.id) }
+                />
+              )) 
+            }
+          </div>
+        </div>
       </div>
     );
   }
